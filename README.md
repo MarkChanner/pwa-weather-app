@@ -98,5 +98,5 @@ self.addEventListener('fetch', evt => {
 });
 ```
 \
-The tutorial also goes on to show how to enable the site to make it installable on a user's device. This has
-not been included to avoid cluttering the examples.
+Information on the running service worker and data stored in the cache can be viewed in the Application tab of Chrome Devtools.
+  
