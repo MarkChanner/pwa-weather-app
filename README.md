@@ -1,7 +1,7 @@
 # Progressive Web App Example
 
 This repo explores some Progressive Web App techniques to build a weather app.
-It is an extract from [this Google Developers tutorial][codelab]. It uses a service
+It is an extract from [this Google Developers tutorial][codelab] which uses a service
 worker to precache app resources, and caches weather data at runtime.
 
 ## To Run
@@ -98,5 +98,5 @@ self.addEventListener('fetch', evt => {
 });
 ```
 \
-The tutorial also goes on to show how to enable the site to make it installable on a user's device. This has
-not been included to avoid cluttering the examples.
+Information on the running service worker and data stored in the cache can be viewed in the Application tab of Chrome Devtools.
+  
