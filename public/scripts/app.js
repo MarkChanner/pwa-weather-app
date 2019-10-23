@@ -1,9 +1,51 @@
 'use strict';
 
+const directDebitMessage =
+  'Your direct debit should be modified to relect actual useage';
+
 const weatherApp = {
   selectedLocations: {},
   addDialogContainer: document.getElementById('addDialogContainer')
 };
+
+/**
+ * Request permission for Notifications after clicking button
+ */
+var button = document.getElementById('notifications');
+button.addEventListener('click', function(e) {
+  Notification.requestPermission().then(function(result) {
+    randomNotification();
+  });
+});
+
+/**
+ *
+ * TODO: Need to subscribe to a Push Service using Push API
+ * Service Worker then listens for push events.
+ * On arrival of a push event, service worker awakens and uses the
+ * information from the push message to show a notification using notification API
+ */
+function randomNotification() {
+  browserNotSupported();
+  permissionGranted();
+  permissionDenied();
+}
+
+function browserNotSupported() {
+  !('Notification' in window) &&
+    alert('This browser does not support system notifications');
+}
+
+function permissionGranted() {
+  Notification.permission === 'granted' && new Notification(directDebitMessage);
+}
+
+function permissionDenied() {
+  Notification.permission !== 'denied' &&
+    Notification.requestPermission(function(permission) {
+      permission === 'granted' && new Notification(directDebitMessage);
+    });
+}
 
 /**
  * Toggles the visibility of the add location dialog box.
